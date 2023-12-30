@@ -1,0 +1,10 @@
+num_layers = 3
+seq_len = 256
+d_model = 1024
+num_heads = 16
+dim_feedforward = 2048
+vocab_size = 8000
+block_size = 256
+batch_size = 128
+num_epochs = 5
+learning_rate = 3e-4
