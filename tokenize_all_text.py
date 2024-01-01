@@ -13,12 +13,12 @@ tokens = torch.tensor(tokens)
 X = []
 Y = []
 segment_size = 256
-for i in tqdm(range(0, len(data) - segment_size, 1)):
+for i in tqdm(range(0, len(data)//2 - segment_size, 1)):
     x_segment = data[i:i+segment_size]
-    y_segment = data[i+segment_size]
-    X.append(torch.tensor(x_segment))
-    Y.append(torch.tensor(y_segment))
+    y_segment = data[i+1:i+segment_size+1]
+    X.append(torch.tensor(x_segment).to(torch.long))
+    Y.append(torch.tensor(y_segment).to(torch.long))
 X = torch.stack(X)
 Y = torch.stack(Y)
-torch.save(X, "X.pt")
-torch.save(Y, "Y.pt")
+torch.save(X.to(torch.long), "X.pt")
+torch.save(Y.to(torch.long), "Y.pt")
